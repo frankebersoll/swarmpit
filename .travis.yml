@@ -13,16 +13,7 @@ cache:
 jdk:
   - openjdk11
 env:
-  - DOCKER=test
   - DOCKER=stable
-  - DOCKER=19.03
-  - DOCKER=18.09
-  - DOCKER=18.03
-  - DOCKER=17.12
-  - DOCKER=17.09
-  - DOCKER=17.06
-  - DOCKER=17.03
-  - DOCKER=1.13
 install:
   - sudo sysctl -w net.ipv4.tcp_mtu_probing=1
   - bash dev/script/init-db.sh
