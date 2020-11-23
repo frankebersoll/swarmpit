@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 set -e
-ORG=swarmpit
-REPO=swarmpit
+ORG=gjnjfgldbngjdflknj
+REPO=swarmpit-loki
 NAMESPACE=$ORG/$REPO
 TAG=${TRAVIS_BRANCH/\//-}
 
 if [ $DOCKER != "stable" ]
 then
-	echo "images are build and deployed only for stable docker build"
-	exit 0
+    echo "images are build and deployed only for stable docker build"
+    exit 0
 fi
 
 if [ $TRAVIS_PULL_REQUEST == "false" ]
@@ -32,8 +32,8 @@ docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7,linux/arm/v6
 
 if [ $TRAVIS_SECURE_ENV_VARS == "true" ] 
 then
-	docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+    docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
     docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7,linux/arm/v6 -t $IMAGE --push .
 else
-	echo "images can be pushed only from base repo"
+    echo "images can be pushed only from base repo"
 fi
